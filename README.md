@@ -1,2 +1,2 @@
-# LeetCode2024
-2024力扣刷题
+# LeetCode
+力扣刷题
