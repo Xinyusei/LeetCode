@@ -23,18 +23,18 @@ public class a27移除元素 {
                 int temp = nums[left];
                 nums[left] = nums[right];
                 nums[right] = temp;
-            }else
+            } else
                 break;
         }
         return left + 1;
     }
-    
-    //东哥的想法- 其实只需要保证nums[0~left]都!=val就行,其实现的方法不一定需要交换,单纯的赋值也可以
+
+    //东哥的想法- 其实只需要保证nums[0~left-1]都!=val就行,其实现的方法不一定需要交换,单纯的赋值也可以
     public int removeElement2(int[] nums, int val) {
         int n = nums.length;
         int left = 0, right = 0;
-        while (right < n){
-            if(nums[right] != val){
+        while (right < n) {
+            if (nums[right] != val) {
                 nums[left] = nums[right];
                 left++;
             }
