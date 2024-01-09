@@ -1,5 +1,9 @@
 package labuladong.数组.双指针;
 
+/**
+ * 26. 删除有序数组中的重复项
+ * https://leetcode.cn/problems/remove-duplicates-from-sorted-array/
+ */
 public class a26删除有序数组中的重复项 {
 
     public int removeDuplicates(int[] nums) {
