@@ -47,7 +47,7 @@ public class 删除子串后的字符串最小长度1_10 {
             char c = s.charAt(i);
             stack.add(c);
             int n = stack.size();
-            if ((c == 'D' || c == 'B' )&& n >= 2 && stack.get(n - 2) == map.get(c)) {
+            if ((c == 'D' || c == 'B') && n >= 2 && stack.get(n - 2) == map.get(c)) {
                 stack.remove(n - 1);
                 stack.remove(n - 2);
             }
@@ -101,4 +101,49 @@ public class 删除子串后的字符串最小长度1_10 {
         return true;
     }
 
+    /**
+     * 删除字符串中的所有相邻重复项
+     * https://leetcode.cn/problems/remove-all-adjacent-duplicates-in-string/
+     */
+    public String removeDuplicates(String s) {
+        LinkedList<Character> stack = new LinkedList<>();
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            stack.push(c);
+            System.out.println(stack);
+            int n = stack.size();
+            while (n >= 2 && stack.get(0) == stack.get(1)) {
+                stack.pop();
+                stack.pop();
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int i = stack.size() - 1; i >= 0; i--) {
+            sb.append(stack.get(i));
+        }
+        return sb.toString();
+    }
+
+    /**
+     * 很巧妙的解法,用StringBuilder模拟栈
+     * @param s
+     * @return
+     */
+    public String removeDuplicates2(String s) {
+        //top指向栈顶,最开始没有元素,为-1
+        int top = -1;
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            //判断当前栈顶元素与即将加入的元素是否为同一字符,若是同一字符,则当前字符不加入,且删掉栈顶元素-模拟删除相邻的相同元素
+            if(top >= 0 && sb.charAt(top) == ch){
+                sb.deleteCharAt(top);
+                --top;
+            }else {
+                sb.append(ch);
+                ++top;
+            }
+        }
+        return sb.toString();
+    }
 }
