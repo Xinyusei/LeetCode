@@ -44,7 +44,7 @@ public class a1_24MID {
      * @return
      */
     public long maximumSumOfHeights(List<Integer> maxHeights) {
-        //TODO 
+        //TODO
         return 0;
     }
 }
