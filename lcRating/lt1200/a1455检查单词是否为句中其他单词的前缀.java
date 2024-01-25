@@ -24,7 +24,7 @@ public class a1455检查单词是否为句中其他单词的前缀 {
     }*/
 
     /**
-     * 1.split 
+     * 1.split
      * 2.starstWith
      * @param sentence
      * @param searchWord
