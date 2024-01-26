@@ -1,4 +1,4 @@
-package lcRating.lt1200;
+package lcRating.le1200;
 
 /**
  * 1351. 统计有序矩阵中的负数

@@ -1,4 +1,4 @@
-package lcRating.lt1200;
+package lcRating.le1200;
 
 /**
  * 1455. 检查单词是否为句中其他单词的前缀

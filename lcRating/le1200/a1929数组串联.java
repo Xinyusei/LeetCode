@@ -1,4 +1,4 @@
-package lcRating.lt1200;
+package lcRating.le1200;
 
 
 /**

@@ -1,4 +1,4 @@
-package lcRating.lt1200;
+package lcRating.le1200;
 
 /**
  * 1450. 在既定时间做作业的学生人数

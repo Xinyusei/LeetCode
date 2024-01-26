@@ -1,4 +1,4 @@
-package lcRating.lt1200;
+package lcRating.le1200;
 
 /**
  * https://leetcode.cn/problems/running-sum-of-1d-array/

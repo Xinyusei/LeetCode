@@ -1,4 +1,4 @@
-package lcRating.lt1200;
+package lcRating.le1200;
 
 /**
  * 1295. 统计位数为偶数的数字
