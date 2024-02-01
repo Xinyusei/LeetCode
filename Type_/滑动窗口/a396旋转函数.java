@@ -1,4 +1,4 @@
-package 三叶刷题.滑动窗口;
+package Type_.滑动窗口;
 
 public class a396旋转函数 {
     /**
