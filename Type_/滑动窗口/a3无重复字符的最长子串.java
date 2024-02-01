@@ -1,7 +1,6 @@
-package 三叶刷题.滑动窗口;
+package Type_.滑动窗口;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 
 /**
