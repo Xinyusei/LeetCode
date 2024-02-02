@@ -1,10 +1,6 @@
-package Ev2024_1;
+package Ev2024.Ev2024_1;
 
 import Common.ListNode;
-
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
 
 /**
  * https://leetcode.cn/problems/remove-nodes-from-linked-list/description/

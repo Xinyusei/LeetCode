@@ -1,9 +1,7 @@
-package Ev2024_1;
+package Ev2024.Ev2024_1;
 
-import java.util.Deque;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Stack;
 
 /**
  * https://leetcode.cn/problems/minimum-string-length-after-removing-substrings/description/?envType=daily-question&envId=2024-01-10

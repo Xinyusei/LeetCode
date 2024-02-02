@@ -1,8 +1,6 @@
-package Ev2024_1;
+package Ev2024.Ev2024_1;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 
 /**
  * 2171. 拿出最少数目的魔法豆

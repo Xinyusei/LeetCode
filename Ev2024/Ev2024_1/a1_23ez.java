@@ -1,4 +1,4 @@
-package Ev2024_1;
+package Ev2024.Ev2024_1;
 
 /**
  * https://leetcode.cn/problems/longest-alternating-subarray/?envType=daily-question&envId=2024-01-23

@@ -1,4 +1,4 @@
-package Ev2024_1;
+package Ev2024.Ev2024_1;
 
 public class 经营摩天轮的最大利润1599 {
     /**

@@ -1,7 +1,6 @@
-package Ev2024_1;
+package Ev2024.Ev2024_1;
 
 import Common.ListNode;
-import com.sun.source.tree.LiteralTree;
 
 /**
  * 82. 删除排序链表中的重复元素 II
