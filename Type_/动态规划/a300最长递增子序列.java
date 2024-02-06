@@ -1,4 +1,4 @@
-package Type_.动态规划.序列;
+package Type_.动态规划;
 
 import java.util.Arrays;
 
