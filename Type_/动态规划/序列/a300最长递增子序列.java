@@ -1,4 +1,4 @@
-package Type_.滑动窗口;
+package Type_.动态规划.序列;
 
 import java.util.Arrays;
 
