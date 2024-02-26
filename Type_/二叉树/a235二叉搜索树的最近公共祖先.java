@@ -38,5 +38,4 @@ public class a235二叉搜索树的最近公共祖先 {
         else
             return lowestCommonAncestor(root.right, p, q);
     }
-
 }
