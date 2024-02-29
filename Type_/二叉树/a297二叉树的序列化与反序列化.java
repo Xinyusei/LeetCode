@@ -1,8 +1,10 @@
 package Type_.二叉树;
 
 import Common.TreeNode;
+import com.sun.source.tree.Tree;
 
 import java.util.LinkedList;
+import java.util.Set;
 
 /**
  * 297. 二叉树的序列化与反序列化
@@ -11,6 +13,111 @@ import java.util.LinkedList;
 public class a297二叉树的序列化与反序列化 {
     private final String SEP_SYMBOL = ",";
     private final String NULL_SYMBOL = "#";
+
+
+    // Encodes a tree to a single string.
+
+    //#,#,2,#,#,4,#,#,5,3,1
+    public String serialize(TreeNode root) {
+        StringBuilder sb = new StringBuilder();
+
+        //前序遍历序列化二叉树
+        //inTraverse2Str(root, sb);
+        //后序遍历序列化二叉树
+        postTraverse2Str(root, sb);
+        return sb.toString();
+    }
+
+    // Decodes your encoded data to tree.
+
+    //1,2,#,#,3,4,#,#,5,#,#,
+    public TreeNode deserialize(String data) {
+        String[] split = data.split(SEP_SYMBOL);
+        LinkedList<String> nodes = new LinkedList<>();
+        for (String s : split) {
+            nodes.addLast(s);
+        }
+
+        //前序遍历对应的反序列化
+        //return inTraverse2Tree(nodes);
+        //后序遍历对应的反序列化
+        return postTraverse2Tree(nodes);
+    }
+
+    //1,2,#,#,3,4,#,#,5,#,#,
+
+    /**
+     * 前序遍历 序列化二叉树
+     *
+     * @param root
+     * @param sb
+     */
+    void inTraverse2Str(TreeNode root, StringBuilder sb) {
+        if (root == null) {
+            sb.append(NULL_SYMBOL).append(SEP_SYMBOL);
+            return;
+        }
+        /****** 前序位置 ******/
+        sb.append(root.val).append(SEP_SYMBOL);
+        /********************/
+        inTraverse2Str(root.left, sb);
+        inTraverse2Str(root.right, sb);
+    }
+
+    /**
+     * 与前序遍历相对应 反序列二叉树
+     *
+     * @param nodes
+     * @return
+     */
+    //[1,2,#,#,3,4,#,#,5,#,#]
+    TreeNode inTraverse2Tree(LinkedList<String> nodes) {
+        if (nodes.isEmpty())
+            return null;
+
+        String first = nodes.removeFirst();
+        if (first.equals(NULL_SYMBOL))
+            return null;
+        TreeNode treeNode = new TreeNode(Integer.parseInt(first));
+        treeNode.left = inTraverse2Tree(nodes);
+        treeNode.right = inTraverse2Tree(nodes);
+
+        return treeNode;
+    }
+
+    /**
+     * 后序遍历 序列化二叉树
+     *
+     * @param root
+     * @param sb
+     */
+
+    //#,#,2,#,#,4,#,#,5,3,1,
+    void postTraverse2Str(TreeNode root, StringBuilder sb) {
+        if (root == null) {
+            sb.append(NULL_SYMBOL).append(SEP_SYMBOL);
+            return;
+        }
+        postTraverse2Str(root.left, sb);
+        postTraverse2Str(root.right, sb);
+
+        sb.append(root.val).append(SEP_SYMBOL);
+
+    }
+
+    //#,#,2,#,#,4,#,#,5,3,1,
+    TreeNode postTraverse2Tree(LinkedList<String> nodes) {
+        if (nodes.isEmpty())
+            return null;
+        String last = nodes.removeLast();
+        if (last.equals(NULL_SYMBOL))
+            return null;
+        TreeNode treeNode = new TreeNode(Integer.parseInt(last));
+        treeNode.right = postTraverse2Tree(nodes);
+        treeNode.left = postTraverse2Tree(nodes);
+
+        return treeNode;
+    }
 
     public static void main(String[] args) {
         TreeNode node1 = new TreeNode(1);
@@ -29,68 +136,5 @@ public class a297二叉树的序列化与反序列化 {
         System.out.println(test.deserialize(dataString));
 
     }
-    // Encodes a tree to a single string.
-
-    //#,#,2,#,#,4,#,#,5,3,1
-    public String serialize(TreeNode root) {
-        StringBuilder sb = new StringBuilder();
-        traverse2Str(root, sb);
-        return sb.toString();
-    }
-
-    // Decodes your encoded data to tree.
-
-    //1,2,#,#,3,4,#,#,5,#,#,
-    public TreeNode deserialize(String data) {
-        String[] split = data.split(SEP_SYMBOL);
-        LinkedList<String> nodes = new LinkedList<>();
-        for (String s : split) {
-            nodes.addLast(s);
-        }
-        return traverse2Tree(nodes);
-    }
-
-    //1,2,#,#,3,4,#,#,5,#,#,
-    void traverse2Str(TreeNode root, StringBuilder sb) {
-        if (root == null) {
-            sb.append(NULL_SYMBOL).append(SEP_SYMBOL);
-            return;
-        }
-        /****** 前序位置 ******/
-        sb.append(root.val).append(SEP_SYMBOL);
-        /********************/
-        traverse2Str(root.left, sb);
-        traverse2Str(root.right, sb);
-    }
-
-    //[1,2,#,#,3,4,#,#,5,#,#]
-    TreeNode traverse2Tree(LinkedList<String> nodes) {
-        if (nodes.isEmpty())
-            return null;
-
-        String first = nodes.removeFirst();
-        if (first.equals(NULL_SYMBOL))
-            return null;
-        TreeNode treeNode = new TreeNode(Integer.parseInt(first));
-        treeNode.left = traverse2Tree(nodes);
-        treeNode.right = traverse2Tree(nodes);
-
-        return treeNode;
-
-    }
-
-    //    LinkedList<Integer> res;
-//
-//    //1,2,-1,-1,3,4,-1,-1,5,-1,-1
-//    void traverseToList(TreeNode root) {
-//        if (root == null) {
-//            res.add(-1);
-//            return;
-//        }
-//        res.addLast(root.val);
-//        traverseToList(root.left);
-//        traverseToList(root.right);
-//    }
-
 
 }
