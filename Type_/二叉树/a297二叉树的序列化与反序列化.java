@@ -1,10 +1,10 @@
 package Type_.二叉树;
 
 import Common.TreeNode;
-import com.sun.source.tree.Tree;
 
+import javax.swing.tree.TreeCellRenderer;
 import java.util.LinkedList;
-import java.util.Set;
+import java.util.List;
 
 /**
  * 297. 二叉树的序列化与反序列化
@@ -13,6 +13,8 @@ import java.util.Set;
 public class a297二叉树的序列化与反序列化 {
     private final String SEP_SYMBOL = ",";
     private final String NULL_SYMBOL = "#";
+
+    private final Integer NULL_VAL = 1100;
 
 
     // Encodes a tree to a single string.
@@ -23,8 +25,12 @@ public class a297二叉树的序列化与反序列化 {
 
         //前序遍历序列化二叉树
         //inTraverse2Str(root, sb);
+
         //后序遍历序列化二叉树
-        postTraverse2Str(root, sb);
+        //postTraverse2Str(root, sb);
+
+        //层序遍历序列化二叉树
+        levelTraverse2Str(root, sb);
         return sb.toString();
     }
 
@@ -32,6 +38,7 @@ public class a297二叉树的序列化与反序列化 {
 
     //1,2,#,#,3,4,#,#,5,#,#,
     public TreeNode deserialize(String data) {
+        if(data.isEmpty()) return null;
         String[] split = data.split(SEP_SYMBOL);
         LinkedList<String> nodes = new LinkedList<>();
         for (String s : split) {
@@ -40,11 +47,80 @@ public class a297二叉树的序列化与反序列化 {
 
         //前序遍历对应的反序列化
         //return inTraverse2Tree(nodes);
+
         //后序遍历对应的反序列化
-        return postTraverse2Tree(nodes);
+        //return postTraverse2Tree(nodes);
+
+        //层序遍历对应的反序列化
+        return levelTraverse2Tree(nodes);
     }
 
-    //1,2,#,#,3,4,#,#,5,#,#,
+
+    /**
+     * 层序遍历序列化二叉树
+     *
+     * @param root
+     * @param sb
+     */
+    //1,2,3,#,#,4,5,#,#,#,#,
+    void levelTraverse2Str(TreeNode root, StringBuilder sb) {
+        if (root == null)
+            return;
+        List<TreeNode> queue = new LinkedList<>();
+        queue.addLast(root);
+        while (!queue.isEmpty()) {
+            int n = queue.size();
+            for (int i = 0; i < n; i++) {
+                TreeNode node = queue.removeFirst();
+                if (node.val != NULL_VAL)
+                    sb.append(node.val).append(SEP_SYMBOL);
+                else {
+                    sb.append(NULL_SYMBOL).append(SEP_SYMBOL);
+                    continue;
+                }
+                if (node.left != null)
+                    queue.addLast(node.left);
+                else
+                    queue.addLast(new TreeNode(NULL_VAL));
+                if (node.right != null)
+                    queue.addLast(node.right);
+                else
+                    queue.addLast(new TreeNode(NULL_VAL));
+            }
+        }
+    }
+
+    //[1,2,3,#,#,4,5,#,#,#,#]
+    TreeNode levelTraverse2Tree(LinkedList<String> nodesList) {
+        if (nodesList.isEmpty())
+            return null;
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        TreeNode root = new TreeNode(Integer.parseInt(nodesList.removeFirst()));
+        queue.addLast(root);
+
+        while (!queue.isEmpty()) {
+            int n = queue.size();
+            for (int i = 0; i < n; i++) {
+                TreeNode treeNode = queue.removeFirst();
+                String leftString = nodesList.removeFirst();
+                if (leftString.equals(NULL_SYMBOL))
+                    treeNode.left = null;
+                else {
+                    treeNode.left = new TreeNode(Integer.parseInt(leftString));
+                    queue.addLast(treeNode.left);
+                }
+                String rightString = nodesList.removeFirst();
+                if (rightString.equals(NULL_SYMBOL))
+                    treeNode.right = null;
+                else {
+                    treeNode.right = new TreeNode(Integer.parseInt(rightString));
+                    queue.addLast(treeNode.right);
+                }
+            }
+
+        }
+        return root;
+    }
 
     /**
      * 前序遍历 序列化二叉树
@@ -52,6 +128,7 @@ public class a297二叉树的序列化与反序列化 {
      * @param root
      * @param sb
      */
+    //1,2,#,#,3,4,#,#,5,#,#,
     void inTraverse2Str(TreeNode root, StringBuilder sb) {
         if (root == null) {
             sb.append(NULL_SYMBOL).append(SEP_SYMBOL);
@@ -102,7 +179,6 @@ public class a297二叉树的序列化与反序列化 {
         postTraverse2Str(root.right, sb);
 
         sb.append(root.val).append(SEP_SYMBOL);
-
     }
 
     //#,#,2,#,#,4,#,#,5,3,1,
