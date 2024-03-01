@@ -72,20 +72,13 @@ public class a297二叉树的序列化与反序列化 {
             int n = queue.size();
             for (int i = 0; i < n; i++) {
                 TreeNode node = queue.removeFirst();
-                if (node.val != NULL_VAL)
-                    sb.append(node.val).append(SEP_SYMBOL);
-                else {
+                if(node == null){
                     sb.append(NULL_SYMBOL).append(SEP_SYMBOL);
                     continue;
                 }
-                if (node.left != null)
-                    queue.addLast(node.left);
-                else
-                    queue.addLast(new TreeNode(NULL_VAL));
-                if (node.right != null)
-                    queue.addLast(node.right);
-                else
-                    queue.addLast(new TreeNode(NULL_VAL));
+                sb.append(node.val).append(SEP_SYMBOL);
+                queue.addLast(node.left);
+                queue.addLast(node.right);
             }
         }
     }
@@ -97,27 +90,21 @@ public class a297二叉树的序列化与反序列化 {
         LinkedList<TreeNode> queue = new LinkedList<>();
         TreeNode root = new TreeNode(Integer.parseInt(nodesList.removeFirst()));
         queue.addLast(root);
-
         while (!queue.isEmpty()) {
             int n = queue.size();
             for (int i = 0; i < n; i++) {
                 TreeNode treeNode = queue.removeFirst();
                 String leftString = nodesList.removeFirst();
-                if (leftString.equals(NULL_SYMBOL))
-                    treeNode.left = null;
-                else {
+                if(!leftString.equals(NULL_SYMBOL)){
                     treeNode.left = new TreeNode(Integer.parseInt(leftString));
                     queue.addLast(treeNode.left);
                 }
                 String rightString = nodesList.removeFirst();
-                if (rightString.equals(NULL_SYMBOL))
-                    treeNode.right = null;
-                else {
+                if (!rightString.equals(NULL_SYMBOL)) {
                     treeNode.right = new TreeNode(Integer.parseInt(rightString));
                     queue.addLast(treeNode.right);
                 }
             }
-
         }
         return root;
     }
