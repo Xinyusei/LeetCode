@@ -4,6 +4,7 @@ import Common.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 235. 二叉搜索树的最近公共祖先
@@ -20,22 +21,25 @@ public class a235二叉搜索树的最近公共祖先 {
      * @return 最近公共祖先节点
      */
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if (root == null)
+        int val1 = Math.min(p.val, q.val);
+        int val2 = Math.max(p.val, q.val);
+
+        return findBST(root, val1, val2);
+    }
+
+
+    TreeNode findBST(TreeNode node, int val1, int val2) {
+        if (node == null)
             return null;
-        //当前节点就是最近公共节点
-        if (p.val == q.val)
-            return p;
-        //将p.val > q.val 的问题都转化为p.val < q.val的问题
-        if (p.val > q.val)
-            return lowestCommonAncestor(root, q, p);
-        //p.val < q.val 且 被root分割成两个子树
-        if (p.val <= root.val && q.val >= root.val)
-            return root;
-        //p.val < q.val 且 位于同一子树中 如果都位于root的左子树
-        if (q.val < root.val)
-            return lowestCommonAncestor(root.left, p, q);
-        //p.val < q.val 且 位于同一子树中 如果都位于root的右子树
-        else
-            return lowestCommonAncestor(root.right, p, q);
+
+        //当前节点的值比更小的值还小,说明两个都位于其右子树
+        if (node.val < val1)
+            return findBST(node.right, val1, val2);
+        //当前节点的值比更大的值还大,说明两个都位于其左子树
+        if (node.val > val2)
+            return findBST(node.left, val1, val2);
+
+        //node.val >= val1 && node.val <= val2
+        return node;
     }
 }
