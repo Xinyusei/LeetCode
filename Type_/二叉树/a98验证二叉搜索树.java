@@ -45,8 +45,6 @@ public class a98验证二叉搜索树 {
     /**
      * 重点 -BST 的中序遍历一定是一个升序序列
      * 1. 中序遍历BST存入数组来判断 - 效率低
-     * 2. 在中序遍历BST的时候存放前一个遍历的值-模拟数组每两个数判断
-     *
      * @param node
      * @param leftMaxNode
      * @param rightMinNode
@@ -55,6 +53,11 @@ public class a98验证二叉搜索树 {
     //prev 即中序遍历到某节点的前一个数的值 如果符合BST则prev < node.val
     private long prev = Long.MIN_VALUE;
 
+    /**
+     * 判断当前node为根的节点是否为一颗合格的BST
+     * @param node
+     * @return
+     */
     boolean traverse2(TreeNode node) {
         if (node == null)
             return true;
