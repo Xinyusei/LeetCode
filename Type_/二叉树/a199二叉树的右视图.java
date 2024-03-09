@@ -12,6 +12,12 @@ import java.util.List;
  */
 public class a199二叉树的右视图 {
 
+    /**
+     * BFS - 层序遍历
+     *
+     * @param root
+     * @return
+     */
     public List<Integer> rightSideView(TreeNode root) {
         List<TreeNode> queue = new LinkedList<>();
         List<Integer> res = new ArrayList<>();
@@ -34,5 +40,36 @@ public class a199二叉树的右视图 {
             }
         }
         return res;
+    }
+
+    /**
+     * DFS - 思维
+     *
+     * @param root
+     * @return
+     */
+
+    private int deep = 0;
+
+    private final List<Integer> res = new ArrayList<>();
+
+    public List<Integer> rightSideView2(TreeNode root) {
+        traverse(root);
+        return res;
+    }
+
+    void traverse(TreeNode node) {
+        if (node == null)
+            return;
+
+        deep++;
+        // 这一层还没有记录值
+        // 说明 root 就是右侧视图的第一个节点
+        if (res.size() < deep) {
+            res.addLast(node.val);
+        }
+        traverse(node.right);
+        traverse(node.left);
+        deep--;
     }
 }
