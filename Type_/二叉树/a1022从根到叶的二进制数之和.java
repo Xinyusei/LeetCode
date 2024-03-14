@@ -25,7 +25,7 @@ public class a1022从根到叶的二进制数之和 {
         if (node == null)
             return;
 
-        pathSum = pathSum << 1 | node.val;
+        pathSum = pathSum << 1 + node.val;
         if (node.left == node.right)
             sum += pathSum;
         traverse2(node.left);
