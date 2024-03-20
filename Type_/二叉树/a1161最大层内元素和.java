@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import static Type_.二叉树.a102二叉树的层序遍历.res;
 
 /**
  * 1161. 最大层内元素和
