@@ -12,6 +12,11 @@ import java.util.Random;
  */
 public class a958二叉树的完全性检验 {
 
+    /**
+     * BFS
+     * @param root
+     * @return
+     */
 
     public boolean isCompleteTree(TreeNode root) {
         // 遍历完所有非空节点时变成 true
@@ -37,6 +42,9 @@ public class a958二叉树的完全性检验 {
         return end;
     }
 
+    /**
+     * DFS
+     */
 
     //最大编号
     int maxIndex = 0;
@@ -44,7 +52,7 @@ public class a958二叉树的完全性检验 {
     //二叉树的节点数量
     int nodeCnt = 0;
 
-    public boolean isCompleteTree(TreeNode root) {
+    public boolean isCompleteTree2(TreeNode root) {
         traverse(root, 1);
 
         //如果二叉树节点数量与最大编号相同则是完全二叉树。 因为编号对应下来是 1234 且不会有间隙。 才是完全二叉树
