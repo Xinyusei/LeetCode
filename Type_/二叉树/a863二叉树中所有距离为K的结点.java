@@ -2,6 +2,7 @@ package Type_.二叉树;
 
 import Common.TreeNode;
 
+import javax.swing.*;
 import java.util.*;
 
 /**
@@ -9,6 +10,9 @@ import java.util.*;
  * https://leetcode.cn/problems/all-nodes-distance-k-in-binary-tree/description/
  */
 public class a863二叉树中所有距离为K的结点 {
+    /**
+     * BFS 版本
+     */
     // 记录父节点：node.val -> parentNode
     // 题目说了树中所有节点值都是唯一的，所以可以用 node.val 代表 TreeNode
     private final Map<Integer, TreeNode> parent = new HashMap<>();
@@ -57,9 +61,48 @@ public class a863二叉树中所有距离为K的结点 {
     private void traverse(TreeNode root, TreeNode parentNode) {
         if (root == null)
             return;
-
         parent.put(root.val, parentNode);
         traverse(root.left, root);
         traverse(root.right, root);
+    }
+}
+
+class Solution {
+
+    private final Map<Integer, TreeNode> parent = new HashMap<>();
+    private final Set<Integer> visited = new HashSet<>();
+    private final List<Integer> res = new ArrayList<>();
+
+    /**
+     * DFS
+     * @param root 
+     * @param target
+     * @param k
+     * @return
+     */
+    public List<Integer> distanceK(TreeNode root, TreeNode target, int k) {
+        traverse(root, null);
+        DFS(target, 0, k);
+        return res;
+    }
+
+    private void traverse(TreeNode root, TreeNode parentNode) {
+        if (root == null)
+            return;
+        parent.put(root.val, parentNode);
+        traverse(root.left, root);
+        traverse(root.right, root);
+    }
+
+    private void DFS(TreeNode node, int dist, int k) {
+        if (node == null || visited.contains(node.val))
+            return;
+
+        visited.add(node.val);
+        if (dist == k)
+            res.addLast(node.val);
+        DFS(parent.get(node.val), dist + 1, k);
+        DFS(node.left, dist + 1, k);
+        DFS(node.right, dist + 1, k);
     }
 }
