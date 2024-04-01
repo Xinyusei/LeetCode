@@ -10,9 +10,7 @@ import java.util.*;
  * https://leetcode.cn/problems/all-nodes-distance-k-in-binary-tree/description/
  */
 public class a863二叉树中所有距离为K的结点 {
-    /**
-     * BFS 版本
-     */
+    /* BFS 版本 */
     // 记录父节点：node.val -> parentNode
     // 题目说了树中所有节点值都是唯一的，所以可以用 node.val 代表 TreeNode
     private final Map<Integer, TreeNode> parent = new HashMap<>();
