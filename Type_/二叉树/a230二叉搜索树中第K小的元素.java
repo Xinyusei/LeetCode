@@ -9,7 +9,8 @@ import java.util.List;
  * 230. 二叉搜索树中第K小的元素
  * https://leetcode.cn/problems/kth-smallest-element-in-a-bst/description/
  */
-public class a230二叉搜索树中第K小的元素 {
+public class
+a230二叉搜索树中第K小的元素 {
     private int rank = 0;
     private int res = 0;
 
