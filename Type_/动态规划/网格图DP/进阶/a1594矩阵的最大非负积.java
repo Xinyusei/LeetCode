@@ -31,9 +31,9 @@ public class a1594矩阵的最大非负积 {
                     } else {
                         f1[i][j] = Math.min(f1[i - 1][j], f1[i][j - 1]);
                         f2[i][j] = Math.max(f2[i - 1][j], f2[i][j - 1]);
-                    }
-                    f1[i][j] *= grid[i][j];
+                    }f1[i][j] *= grid[i][j];
                     f2[i][j] *= grid[i][j];
+
                 }
             }
             System.out.println(Arrays.deepToString(f1));
