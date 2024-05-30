@@ -1,4 +1,4 @@
-package Type_.滑动窗口;
+package Type_.滑动窗口.定长;
 
 /**
  * 643. 子数组最大平均数 I

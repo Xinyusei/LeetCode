@@ -1,4 +1,4 @@
-package Type_.滑动窗口;
+package Type_.滑动窗口.定长;
 
 /**
  * 2269. 找到一个数字的 K 美丽值
