@@ -13,9 +13,6 @@ public class a881救生艇 {
             Arrays.sort(people);
             int cnt = 0;
             int hi = people.length - 1;
-            while (people[hi] > limit)
-                hi--;
-            cnt += people.length - hi - 1;
             int lo = 0;
             while (lo <= hi) {
                 if (people[lo] + people[hi] <= limit) {
