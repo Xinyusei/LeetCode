@@ -6,7 +6,7 @@ package Ev2024.Ev2024_6;
 public class a3040相同分数的最大操作数目II {
     class Solution {
         public int maxOperations(int[] nums) {
-            
+            return 0;
         }
     }
 }
