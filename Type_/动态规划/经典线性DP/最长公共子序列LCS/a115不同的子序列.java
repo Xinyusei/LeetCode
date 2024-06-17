@@ -18,16 +18,18 @@ public class a115不同的子序列 {
             //base case
             for (int i = 0; i <= m; i++)
                 f[i][0] = 1;
-            
+
             for (int i = 1; i <= m; i++) {
                 for (int j = 1; j <= n; j++) {
                     //两种决策
-                    //1.不让s[i]参与匹配 则 f[i][j] = f[i - 1][j]
-                    f[i][j] = f[i - 1][j];
-                    //2.让s[i]参与匹配, 则要求s[i] == t[j]
-                    //s[i] = t[j]
-                    if(s.charAt(i - 1) == t.charAt(j - 1)){
-                        f[i][j] += f[i - 1][j - 1];
+                    //1.s[i - 1] != t[j - 1],则不让s[i]参与匹配,跳过。有:f[i][j] = f[i - 1][j]
+                    if (s.charAt(i - 1) != t.charAt(j - 1))
+                        f[i][j] = f[i - 1][j];
+                        //2.s[i - 1] == t[j - 1]
+                        //2.1 s[i - 1]参与匹配,此时 不需要考虑当前s子串和t子串的最后一位字母，所以只需要 f[i-1][j-1]
+                        //2.2 s[i - 1]不参与匹配,则需要f[i - 1][j]
+                    else {
+                        f[i][j] += f[i - 1][j - 1] + f[i - 1][j];
                     }
                 }
             }
