@@ -1,4 +1,4 @@
-package Type_.数学.线性筛选_欧拉筛;
+package Type_.数学.质数相关;
 
 import java.util.Arrays;
 
