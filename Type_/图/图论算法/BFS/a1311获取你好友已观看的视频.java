@@ -1,4 +1,4 @@
-package Type_.图.BFS;
+package Type_.图.图论算法.BFS;
 
 import java.util.*;
 
