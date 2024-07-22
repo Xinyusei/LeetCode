@@ -44,7 +44,7 @@ public class a1319连通网络的操作次数 {
     class Solution2 {
         //todo 并查集解法
         public int makeConnected(int n, int[][] connections) {
-
+            return 0;
         }
     }
 
