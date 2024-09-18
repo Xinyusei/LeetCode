@@ -14,34 +14,35 @@ public class a34在排序数组中查找元素的第一个和最后一个位置 
 
         //大于等于target的最小索引
         public int leftBound(int[] nums, int target) {
-            int left = 0, right = nums.length;
-            while (left < right) {
-                int mid = left + (right - left) / 2;
-                if (nums[mid] < target)
-                    left = mid + 1;
+            int lo = 0, hi = nums.length;
+            while (lo < hi) {
+                int mid = ((hi - lo) >> 1) + lo;
+                //[lo, mid) mid (mid + 1,hi)
+                if (nums[mid] >= target)
+                    hi = mid;
                 else
-                    right = mid;
+                    lo = mid + 1;
             }
-            int index = left;
-            if(index >= nums.length || nums[index] != target)
+            if (lo == nums.length || nums[lo] != target)
                 return -1;
-            return index;
+            return lo;
         }
 
         //小于等于target的最大索引
         public int rightBound(int[] nums, int target) {
-            int left = 0, right = nums.length;
-            while (left < right) {
-                int mid = left + (right - left) / 2;
-                if (nums[mid] > target)
-                    right = mid;
+            int lo = 0, hi = nums.length;
+            while (lo < hi) {
+                int mid = (hi - lo) >> 1 + lo;
+                //[lo, mid) mid (mid + 1,hi)
+                if (nums[mid] <= target)
+                    lo = mid + 1;
                 else
-                    left = mid + 1;
+                    hi = mid;
             }
-            int index = left - 1;
-            if(index < 0 || index >= nums.length || nums[index] != target)
+            int idx = lo - 1;
+            if (idx == nums.length || idx < 0 || nums[idx] != target)
                 return -1;
-            return index;
+            return idx;
         }
     }
 }
