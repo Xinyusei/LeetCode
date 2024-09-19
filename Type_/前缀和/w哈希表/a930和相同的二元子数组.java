@@ -8,6 +8,7 @@ import java.util.Set;
  * @Author: ZJX
  * @Date: 2024/09/19
  * @Description: <a href="https://leetcode.cn/problems/binary-subarrays-with-sum/description/">930和相同的二元子数组</a>
+ * 30分钟
  */
 public class a930和相同的二元子数组 {
     class Solution {
