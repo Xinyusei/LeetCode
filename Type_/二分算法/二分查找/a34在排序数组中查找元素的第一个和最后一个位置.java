@@ -40,6 +40,7 @@ public class a34在排序数组中查找元素的第一个和最后一个位置 
                     hi = mid;
             }
             int idx = lo - 1;
+            //这样想:在缩小区间的时候,mid = lo - 1
             if (idx == nums.length || idx < 0 || nums[idx] != target)
                 return -1;
             return idx;
