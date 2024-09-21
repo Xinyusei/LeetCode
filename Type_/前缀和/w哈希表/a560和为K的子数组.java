@@ -135,3 +135,34 @@ class a974和可被K整除的子数组 {
     }
 }
 
+
+class a523连续的子数组和 {
+    class Solution {
+        public boolean checkSubarraySum(int[] nums, int k) {
+            int n = nums.length;
+            if (n < 2)
+                return false;
+            int[] sums = new int[n + 1];
+            for (int i = 1; i <= n; i++) {
+                sums[i] = sums[i - 1] + nums[i - 1];
+            }
+            HashMap<Integer, Integer> record = new HashMap<>();
+            //record<K,V> 表示余数为K,下标索引为V
+            record.put(0, -1);
+            //0,23,25,29,35,42
+            //
+            //0,5,1,5,5,0
+            for (int i = 0; i <= n; i++) {
+                int val = sums[i], mod = val % k;
+                if (record.containsKey(mod)) {
+                    if (i - record.get(mod) >= 2)
+                        return true;
+                } else {
+                    record.put(mod, i);
+                }
+            }
+            return false;
+        }
+    }
+}
+
